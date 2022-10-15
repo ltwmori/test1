@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import classes from './EditableTable.module.scss';
+import classes from './EditableTableChecking.module.scss';
 import { Checkbox } from './Checkbox';
 import { filterAsc, filterDesc, filterInactive, IColumn, sortingOrder } from './GlobalTable';
 import { useTranslations } from '../../hooks/useTranslations';
@@ -20,6 +20,8 @@ type ActionType = {
   handler: (item: any) => void;
 };
 
+const AnalysisTypes = ['Выберите опцию', 'Анализ гормонов', 'Анализ мочи', 'Общий анализ крови'];
+
 export const EditableTableChecking: React.FC<PropsType> = ({
   columns,
   data,
@@ -34,6 +36,7 @@ export const EditableTableChecking: React.FC<PropsType> = ({
   const [actions, setActions] = useState<ActionType[]>([]);
   const [editing, setEditing] = useState<number[]>([]);
   const { t } = useTranslations();
+  const [anType, setDocType] = useState<string>(AnalysisTypes[0]);
   const { language } = useLanguageContext();
 
   const [footerWithEmptyCols, setFooterWithEmptyCols] = useState<string[]>([]);
@@ -41,6 +44,13 @@ export const EditableTableChecking: React.FC<PropsType> = ({
   const wrapperRef = useRef<HTMLDivElement | null>(null);
   const tableHeadRow = useRef<HTMLTableRowElement | null>(null);
   const footerRef = useRef<HTMLDivElement | null>(null);
+
+  //   const [selected, setSelected] = useState(AnalysisTypes[0].valueOf);
+
+  //   const handleChange = (event: { target: { value: any } }) => {
+  //     console.log(event.target.value);
+  //     setSelected(event.target.value);
+  //   };
 
   useEffect(() => {
     setRows((rs) => rs.map((r) => ({ ...r, checked: false })));
@@ -161,13 +171,15 @@ export const EditableTableChecking: React.FC<PropsType> = ({
 
   return (
     <div className={classes['container']}>
+      <div className={classes['cont']}></div>
       <div className={classes['wrapper']} ref={wrapperRef}>
         <Dropdown
-          options={[]}
-          placeholder={''}
-          onChange={function (option: string): void {
-            throw new Error('Function not implemented.');
-          }}
+          options={AnalysisTypes}
+          placeholder={'Вид анализа'}
+          onChange={setDocType}
+          withSearch={false}
+          selectedOption={anType}
+          label={'Вид анализа'}
         />
         <div className={classes['cont']}></div>
         <table className={classes['table']}>
@@ -278,32 +290,6 @@ export const EditableTableChecking: React.FC<PropsType> = ({
           </tbody>
         </table>
       </div>
-      {footerColumns && (
-        <div className={classes['footer']} ref={footerRef}>
-          <p>{t('total')}</p>
-          {footerWithEmptyCols.map((col) =>
-            footerColumns?.includes(col) && getSumOfCols ? (
-              pairs &&
-              pairs.has(col) &&
-              pairs.get(col) &&
-              getSumOfCols.get(col) !== getSumOfCols.get(pairs.get(col)) ? (
-                <div
-                  key={col}
-                  className={classNames(classes['status--shortage'], classes['white-bg'])}
-                >
-                  {getSumOfCols.get(col)}
-                </div>
-              ) : (
-                <div key={col} className={classes['white-bg']}>
-                  {getSumOfCols.get(col)}
-                </div>
-              )
-            ) : (
-              <div key={col} className={classes['not--white']}></div>
-            )
-          )}
-        </div>
-      )}
     </div>
   );
 };

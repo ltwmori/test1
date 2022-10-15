@@ -1,7 +1,10 @@
 {
   "name": "rfid",
+  "homepage": "https://ltwmori.github.io/test1",
   "version": "1.0.0",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -b main -d build",
     "start": "cross-env NODE_ENV=development webpack serve --config webpack/webpack.dev.js",
     "build": "cross-env NODE_ENV=production webpack --config webpack/webpack.prod.js",
     "lint": "prettier --check .",
@@ -61,6 +64,7 @@
     "axios": "^0.27.2",
     "chart.js": "^3.9.1",
     "classnames": "^2.3.1",
+    "gh-pages": "^4.0.0",
     "react": "^18.2.0",
     "react-apexcharts": "^1.4.0",
     "react-chartjs-2": "^4.3.1",
