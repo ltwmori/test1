@@ -29,14 +29,14 @@
     border: 1px solid var(--color-grey-2);
     border-radius: 10px;
     background-color: var(--color-white);
-    color: var(--color-dark-blue);
+    color: var(--color-light-blue);
     font-weight: 500;
     font-size: 1.4rem;
     line-height: 1;
   }
 
   &--tertiary {
-    background: linear-gradient(360deg, #013773 -88.33%, #4B84F1 100%);
+    background: linear-gradient(360deg, #266be1 -88.33%, #0393e1 100%);
     color: var(--color-white);
     border-radius: 10px;
     height: 4rem;

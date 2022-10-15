@@ -5,7 +5,7 @@
   flex-direction: column;
   position: relative;
   padding-bottom: 4.1rem;
-
+  
   &__request-info {
     display: flex;
     flex-direction: column;
@@ -13,12 +13,16 @@
     padding: 1.2rem 2rem;
 
     h3 {
-      font-size: 1.4rem;
+      font-size: 4rem;
       line-height: 1.4;
       color: var(--color-black-3);
       font-weight: 500;
     }
   }
+}
+
+.cont {
+  height: 20px;
 }
 
 .table {

@@ -4,6 +4,7 @@ import classes from './ButtonsHeader.module.scss';
 import { Dropdown } from './Dropdown';
 import Calendarik from './Calendarik';
 import { useTranslations } from '../../hooks/useTranslations';
+import { Input } from './Input';
 
 interface IButtonsHeaderProps {
   handleSaveClick: () => void;
@@ -23,11 +24,7 @@ export const ButtonsHeader: React.FC<IButtonsHeaderProps> = ({
   return (
     <div className={classes['header']}>
       <div className={classes['header__left']}>
-        <div className={classes['header__number']}>
-          <div>№</div>
-          <div className={classes['header__vertical-line']}></div>
-          <div>123456</div>
-        </div>
+        
         <Calendarik date={date} setDate={setDate} />
       </div>
       <div className={classes['header__right']}>

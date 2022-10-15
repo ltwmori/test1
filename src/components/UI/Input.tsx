@@ -42,6 +42,7 @@ export const Input: React.FC<PropsType> = ({
           type={type}
           className={classes['input']}
           value={value}
+          placeholder={label}
           name={name}
           onChange={onChange}
           onKeyDown={onKeyPress && ((event) => onKeyPress(event))}

@@ -10,7 +10,6 @@ import classNames from 'classnames';
 type PropsType = {
   columns: IColumn[];
   data: any[];
-  footerColumns?: string[];
   pairs?: Map<string, string>;
 };
 
@@ -19,7 +18,7 @@ type ActionType = {
   handler: (item: any) => void;
 };
 
-export const EditableTable: React.FC<PropsType> = ({ columns, data, footerColumns, pairs }) => {
+export const EditableTable: React.FC<PropsType> = ({ columns, data, pairs }) => {
   const [rows, setRows] = useState<any[]>([...data]);
   const [sortKey, setSortKey] = useState<string>(columns[0].dataIndex);
   const [sortOrder, setSortOrder] = useState<sortingOrder>(sortingOrder.none);
@@ -40,20 +39,7 @@ export const EditableTable: React.FC<PropsType> = ({ columns, data, footerColumn
     setRows((rs) => rs.map((r) => ({ ...r, checked: false })));
   }, [data]);
 
-  useEffect(() => {
-    if (footerColumns) {
-      const minIndex = footerColumns.reduce(
-        (acc, x) =>
-          Math.min(
-            acc,
-            columns.findIndex((col) => col.dataIndex === x)
-          ),
-        1000
-      );
-
-      setFooterWithEmptyCols([...columns.slice(minIndex).map((col) => col.dataIndex)]);
-    }
-  }, [columns, footerColumns]);
+ 
 
   const sortTable = (key: string) => {
     const newOrder: string = sortOrder === 'asc' ? 'desc' : 'asc';
@@ -153,36 +139,26 @@ export const EditableTable: React.FC<PropsType> = ({ columns, data, footerColumn
         10
       }px`;
     }
-  }, [footerColumns, footerWithEmptyCols, language]);
+  }, [footerWithEmptyCols, language]);
 
-  const getSumOfCols = useMemo(() => {
-    if (footerColumns) {
-      const hashSum = new Map();
-      footerColumns.forEach((col) => {
-        const sum = data?.length > 0 ? data.reduce((acc, item) => acc + item[col], 0) : 0;
-        hashSum.set(col, sum);
-      });
-      return hashSum;
-    }
-    return undefined;
-  }, [footerColumns, data]);
-
+ 
   return (
     <div className={classes['container']}>
       <div className={classes['container-info']}>
         <h3>
-          <b>{t('store')}:</b> {'AAA'}
+          <b>{t('name')}:</b> {'КАНАТОВ КАНАТ КАНАТОВИЧ'}
         </h3>
         <h3>
-          <b>{t('mol')}: </b> {'AAA'}
+          <b>{t('num')}: </b> {'1555666'}
         </h3>
         <h3>
-          <b>{t('executor')}: </b> {'AAA'}
+          <b>{t('executor')}: </b> {'Процедурный кабинет "Сарыарка-24" - Астана'} 
         </h3>
         <h3>
-          <b>{t('status')}: </b> {'AAA'}
+          <b>{t('dateExecute')}: </b> {'20.07.2022 12:00'}
         </h3>
       </div>
+      <div className={classes['cont']}></div>
       <div className={classes['wrapper']} ref={wrapperRef}>
         <table className={classes['table']}>
           <thead>
@@ -291,32 +267,7 @@ export const EditableTable: React.FC<PropsType> = ({ columns, data, footerColumn
           </tbody>
         </table>
       </div>
-      {footerColumns && (
-        <div className={classes['footer']} ref={footerRef}>
-          <p>{t('total')}</p>
-          {footerWithEmptyCols.map((col) =>
-            footerColumns?.includes(col) && getSumOfCols ? (
-              pairs &&
-              pairs.has(col) &&
-              pairs.get(col) &&
-              getSumOfCols.get(col) !== getSumOfCols.get(pairs.get(col)) ? (
-                <div
-                  key={col}
-                  className={classNames(classes['status--shortage'], classes['white-bg'])}
-                >
-                  {getSumOfCols.get(col)}
-                </div>
-              ) : (
-                <div key={col} className={classes['white-bg']}>
-                  {getSumOfCols.get(col)}
-                </div>
-              )
-            ) : (
-              <div key={col} className={classes['not--white']}></div>
-            )
-          )}
-        </div>
-      )}
+      
     </div>
   );
 };
