@@ -20,8 +20,6 @@ type ActionType = {
   handler: (item: any) => void;
 };
 
-const AnalysisTypes = ['Выберите опцию', 'Анализ гормонов', 'Анализ мочи', 'Общий анализ крови'];
-
 export const EditableTableChecking: React.FC<PropsType> = ({
   columns,
   data,
@@ -36,7 +34,7 @@ export const EditableTableChecking: React.FC<PropsType> = ({
   const [actions, setActions] = useState<ActionType[]>([]);
   const [editing, setEditing] = useState<number[]>([]);
   const { t } = useTranslations();
-  const [anType, setDocType] = useState<string>(AnalysisTypes[0]);
+  
   const { language } = useLanguageContext();
 
   const [footerWithEmptyCols, setFooterWithEmptyCols] = useState<string[]>([]);
@@ -173,14 +171,6 @@ export const EditableTableChecking: React.FC<PropsType> = ({
     <div className={classes['container']}>
       <div className={classes['cont']}></div>
       <div className={classes['wrapper']} ref={wrapperRef}>
-        <Dropdown
-          options={AnalysisTypes}
-          placeholder={'Вид анализа'}
-          onChange={setDocType}
-          withSearch={false}
-          selectedOption={anType}
-          label={'Вид анализа'}
-        />
         <div className={classes['cont']}></div>
         <table className={classes['table']}>
           <thead>

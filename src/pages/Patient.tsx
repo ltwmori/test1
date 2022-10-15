@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import classes from './Patient.module.scss';
 import { Dropdown } from '../components/UI/Dropdown';
 import { ButtonsHeader } from '../components/UI/ButtonsHeader';
@@ -33,11 +33,12 @@ export const Patient = () => {
   const navigate = useNavigate();
   const [isPressed, setIsPressed] = useState(false);
   const handleOnClick = () => {
-    navigate('/questions');
+    navigate('/survey');
   };
   const { t } = useTranslations();
 
   const [IIN, setIIN] = useState('');
+
   const [code, setCode] = useState('');
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
@@ -58,26 +59,42 @@ export const Patient = () => {
     setIsPressed((prev) => !prev);
   };
 
+  const AnalysisTypes = ['Анализ гормонов', 'Анализ мочи', 'Общий анализ крови'];
+  const [anType, setDocType] = useState<string>(AnalysisTypes[0]);
+
   return (
     <main className={classes['inventory']}>
       <AccountantButtons />
-      <div className={classes['inventory__table']}>
-        <EditableTableChecking columns={columns} data={data} pairs={hashMap} />
-      </div>
-      <Button variant="primary" onClick={handlePressClick}>
-        Sent
-      </Button>
-      {isPressed && (
-        <div className={classes['diagnosis']}>
-          <h3>Первичный гипотериоз: </h3>
-          <div className={classes['diagnosis__text']}>
-            <p>У вас имеется подозрение на Первичный гипотериоз.</p>
-            <p>Для точного преддиагноза необходимо пройти дополнительные исследования.</p>
+      <Dropdown
+        options={AnalysisTypes}
+        placeholder={'Выберите опцию'}
+        onChange={setDocType}
+        withSearch={false}
+        selectedOption={anType}
+        label={'Вид анализа'}
+      />
+      {anType === 'Анализ гормонов' && (
+        <div>
+          <div className={classes['inventory__table']}>
+            <EditableTableChecking columns={columns} data={data} pairs={hashMap} />
           </div>
-          <div className={classes['diagnosis__button']} onClick={handleOnClick}>
-            <div className={classes['diagnosis__btn']}>Ответить на вопросы</div>
-            <div className={classes['diagnosis__text1']}>2 мин.</div>
-          </div>
+          <Button variant={'tertiary'} onClick={handlePressClick}>
+            Отправить
+          </Button>
+          <div className={classes['cont']}></div>
+          {isPressed && (
+            <div className={classes['diagnosis']}>
+              <h3>Первичный гипотериоз: </h3>
+              <div className={classes['diagnosis__text']}>
+                <p>У вас имеется подозрение на Первичный гипотериоз.</p>
+                <p>Для точного преддиагноза необходимо пройти дополнительные исследования.</p>
+              </div>
+              <div className={classes['diagnosis__button']} onClick={handleOnClick}>
+                <div className={classes['diagnosis__btn']}>Ответить на вопросы</div>
+                <div className={classes['diagnosis__text1']}>2 мин.</div>
+              </div>
+            </div>
+          )}
         </div>
       )}
     </main>
