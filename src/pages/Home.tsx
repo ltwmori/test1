@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import classes from './Inventory.module.scss';
-import { Dropdown } from '../components/UI/Dropdown';
-import { ButtonsHeader } from '../components/UI/ButtonsHeader';
 import { EditableTable } from '../components/UI/EditableTable';
 import { Input } from '../components/UI/Input';
 import { IColumn } from '../components/UI/GlobalTable';
