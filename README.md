@@ -1,5 +1,7 @@
 # front
 
+Used Webpack, ReactJS, Typescript, SCSS
+
 Screens:
 ![image](https://user-images.githubusercontent.com/56842208/195994302-a0f07da3-f262-472b-aa35-81e688d3338b.png)
 ![image](https://user-images.githubusercontent.com/56842208/195994311-9ff14a8a-6a93-415b-b5bb-1a402487cf59.png)
