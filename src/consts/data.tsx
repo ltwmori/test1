@@ -2,10 +2,10 @@ export const data = [
   {
     number: 1,
     component: 'ТТГ',
-    result: '1',
+    result: '4.72',
     unit: 'мкME/мл',
     normal: '0,4-3,77',
-    comment: 'Норма',
+    comment: 'Выше нормы',
   },
   {
     number: 2,
@@ -13,7 +13,7 @@ export const data = [
     result: '1',
     unit: 'пг/мл',
     normal: '2,00-4,40',
-    comment: 'Норма',
+    comment: 'Ниже нормы',
   },
   {
     number: 3,
@@ -21,7 +21,7 @@ export const data = [
     result: '0.92',
     unit: 'нг/мл',
     normal: '1,00-1,70',
-    comment: 'Норма',
+    comment: 'Ниже нормы',
   },
   {
     number: 4,
@@ -52,8 +52,8 @@ export const data = [
     component: 'Индекс свободного ПСА',
     result: '1',
     unit: '%',
-    normal: 'Выше 15%',
-    comment: 'Норма',
+    normal: '15-100',
+    comment: 'Ниже нормы',
   },
   {
     number: 8,
@@ -66,7 +66,7 @@ export const data = [
   {
     number: 9,
     component: 'Тиреоглобулин',
-    result: '1',
+    result: '1.53',
     unit: 'нг/мл',
     normal: '1,4-78',
     comment: 'Норма',
