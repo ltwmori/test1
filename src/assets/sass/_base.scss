@@ -1,0 +1,35 @@
+//@import '~antd/dist/antd.css';
+html,
+body {
+  height: 100%;
+}
+
+html {
+  font-size: 62.5%;
+
+  @media screen and (max-width: 1400px) {
+    font-size: 56.25%;
+  }
+
+  @media screen and (max-width: 1200px) {
+    font-size: 50%;
+  }
+}
+
+body {
+  font-family: var(--ff-primary);
+}
+
+main {
+  grid-area: main;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-light-blue);
+  border-radius: 10px;
+}

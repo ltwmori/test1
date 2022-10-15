@@ -1,0 +1,35 @@
+.buttons {
+  grid-area: btns;
+  display: flex;
+  gap: 2.1rem;
+  padding-bottom: 0.8rem;
+  overflow-x: auto;
+
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--color-light-blue);
+    border-radius: 10px;
+  }
+}
+
+.link {
+  text-decoration: none;
+
+  &--active{
+    > button {
+        background-color: var(--color-light-blue);
+        color: var(--color-white);
+        font-weight: 800;
+        > svg {
+          fill: white;
+          > circle {
+            fill: white;
+          }
+        }
+    }
+  }
+
+}

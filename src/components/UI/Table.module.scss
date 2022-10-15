@@ -1,0 +1,163 @@
+.table {
+  border-collapse: collapse;
+  margin: 0 2em;
+
+  tr {
+    height: 4rem;
+    border-bottom: 1px solid #B0B8DA66;
+    color: var(--color-black-3);
+  }
+
+  th {
+    text-align: left;
+    color: var(--color-grey-1);
+    font-size: 1.2rem;
+    line-height: 1.4;
+    font-weight: 500;
+  }
+
+  td {
+    font-size: 1.4rem;
+    line-height: 1.4;
+    color: var(--color-black-3);
+    font-weight: 500;
+  }
+
+  tbody {
+    tr {
+      &:nth-child(2n - 1) {
+        background-color: var(--color-white);
+      }
+
+      td:first-child {
+        color: var(--color-grey-1);
+      }
+    }
+  }
+
+  th, td {
+    padding: 0 1rem;
+    vertical-align: middle;
+
+    &:not(:last-child) {
+      border-right: 1px dashed var(--color-grey-2);
+    }
+  }
+
+  &__header-wrapper {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    background-color: var(--color-white);
+  }
+
+  &__header {
+    background-color: var(--color-white);
+    padding: 1.2rem 2rem;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+
+    h2 {
+      color: var(--color-dark-blue);
+      font-size: 1.8rem;
+      line-height: 1.4;
+      font-weight: 600;
+    }
+
+    h3 {
+      font-size: 1.4rem;
+      line-height: 1.4;
+      color: var(--color-black-3);
+      font-weight: 500;
+    }
+  }
+
+  &__date {
+    font-size: 1.4rem;
+    line-height: 1.4;
+    color: var(--color-light-blue);
+    font-weight: 600;
+  }
+
+  &__request-info {
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+    padding: 1.2rem 2rem;
+
+    h3 {
+      font-size: 1.4rem;
+      line-height: 1.4;
+      color: var(--color-black-3);
+      font-weight: 500;
+    }
+  }
+
+  &__container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+    background-color: #ECF0F966;
+    border-radius: 10px;
+    padding: 1rem;
+  }
+
+  &__total {
+    > td {
+      font-weight: 800;
+    }
+
+    > td:first-child {
+      color: var(--color-grey-1);
+      padding-right: 1rem;
+      text-align: right;
+    }
+  }
+
+  &__footer {
+    position: absolute;
+    bottom: 1rem;
+    width: calc(100% - 2rem);
+    background-color: var(--color-white);
+    border-radius: 10px;
+    padding: 1.2rem 2rem;
+    display: flex;
+    gap: 1rem;
+    font-size: 1.4rem;
+    line-height: 1.4;
+    color: var(--color-black-3);
+    font-weight: 500;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__footer-buttons {
+    display: flex;
+    gap: 1rem;
+
+  }
+
+  &__edit,
+  &__delete {
+    cursor: pointer;
+  }
+
+  &__delete {
+    color: var(--color-red);
+  }
+}
+
+.header {
+  &__name {
+    width: 42rem;
+  }
+}
+

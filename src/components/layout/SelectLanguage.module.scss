@@ -1,0 +1,21 @@
+.select {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  margin-left: auto;
+  margin-right: 4.3rem;
+}
+
+.item {
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--color-grey-2);
+  cursor: pointer;
+
+  &--selected {
+    font-weight: 800;
+    color: var(--color-light-blue);
+    text-decoration: underline;
+  }
+}

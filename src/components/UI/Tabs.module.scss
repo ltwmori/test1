@@ -1,0 +1,36 @@
+.radio {
+  &__options {
+    display: flex;
+    border-bottom: 1px solid var(--color-grey-2);
+  }
+
+  &__option {
+    display: block;
+    position: relative;
+    padding-top: 1rem;
+  }
+
+  &__input {
+    position: absolute;
+    left: 0;
+    opacity: 0;
+  }
+
+  &__label {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 2rem;
+    padding-right: 2rem;
+    font-size: 1.8rem;
+    line-height: 1.4;
+    font-weight: 500;
+    color: var(--color-grey-2);
+    cursor: pointer;
+  }
+
+  &__input:checked + &__label {
+    color: var(--color-light-blue);
+    border-bottom: 2px solid var(--color-light-blue);
+  }
+}

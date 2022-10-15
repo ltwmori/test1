@@ -1,0 +1,21 @@
+.item {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+
+  &__text {
+    font-size: 1.4rem;
+    line-height: 1.4;
+    font-weight: 500;
+    color: var(--color-grey-1);
+    margin-right: auto;
+  }
+
+  &__title {
+    color: var(--color-dark-blue);
+  }
+
+  &__action-icon {
+    cursor: pointer;
+  }
+}

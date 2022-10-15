@@ -1,0 +1,50 @@
+.input {
+  height: 5rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 1.8rem;
+  border: 2px solid var(--color-light-blue);
+  border-radius: 80px;
+  padding: 0 3.2rem;
+  outline: none;
+  color: rgba(#000, 0.8);
+  font-weight: 500;
+
+  &[type='password'] {
+    letter-spacing: 1.2rem;
+    font-size: 3rem;
+    color: var(--color-light-blue);
+    padding-right: 7rem;
+  }
+
+  &__container {
+    width: 100%;
+    background-color: var(--color-white);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  &__label {
+    font-size: 1.4rem;
+    color: var(--color-black-2);
+    font-weight: 600;
+  }
+
+  &__wrapper {
+    position: relative;
+    width: 100%;
+
+    img {
+      position: absolute;
+      right: 3.2rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  &:-webkit-autofill::first-line {
+    font-size: 1.8rem !important;
+  }
+}
